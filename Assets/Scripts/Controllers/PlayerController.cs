@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         _movement = Input.GetAxis("Horizontal") * movementSpeed;
-        Debug.Log($"{_movement}, {Input.GetAxis("Horizontal")}");
+        // Debug.Log($"{_movement}, {Input.GetAxis("Horizontal")}");
     }
     
     private void FixedUpdate()

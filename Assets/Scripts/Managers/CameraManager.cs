@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,7 +12,8 @@ public class CameraManager : MonoBehaviour
     public float cameraSpeed = 5.0f;
 
     [Header("UI Components")]
-    //
+    public TMP_Text scoreText;
+    
 
     private float _score = 0;
     private Transform playerTransform;
@@ -26,11 +28,16 @@ public class CameraManager : MonoBehaviour
     {
         if (_isGameOver || playerTransform == null)
             return;
-        
+
         if (playerTransform.position.y > transform.position.y)
+        {
             transform.position = Vector3.Lerp(transform.position,
                 new Vector3(transform.position.x, playerTransform.position.y, transform.position.z),
                 cameraSpeed * Time.deltaTime);
+             
+            _score += Time.deltaTime * 15.0f;
+            scoreText.text = $"Score: {(int) _score}";
+        }
     }
 
     public void OnCollisionEnter2D(Collision2D other)
