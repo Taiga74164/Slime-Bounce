@@ -18,6 +18,16 @@ public class PlayerController : MonoBehaviour
     
     private void Update()
     {
+        if (GameManager.Instance.isPaused)
+        {
+            _rb.simulated = false;
+            return;
+        }
+        else
+        {
+            _rb.simulated = true;
+        }
+        
         _movement = Input.GetAxis("Horizontal") * movementSpeed;
         // Debug.Log($"{_movement}, {Input.GetAxis("Horizontal")}");
     }

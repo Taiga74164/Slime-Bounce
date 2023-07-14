@@ -26,7 +26,7 @@ public class CameraManager : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (_isGameOver || playerTransform == null)
+        if (_isGameOver || playerTransform == null || GameManager.Instance.isPaused)
             return;
 
         if (playerTransform.position.y > transform.position.y)

@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 
-
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
     public GameObject padPrefab;
     public GameObject superPadPrefab;
@@ -13,8 +13,8 @@ public class GameManager : MonoBehaviour
     public float minVerticalDistance;
     public float maxVerticalDistance;
 
-    public GameObject pausePanel; // UI Panel that will show when game is paused
-    private bool _isPaused = false; // Track if the game is paused
+    public PauseMenu pausePanel; // UI Panel that will show when game is paused
+    public bool isPaused = false; // Track if the game is paused
 
     private List<GameObject> _pads = new List<GameObject>();
     private Vector2 _spawnPosition;
@@ -23,8 +23,6 @@ public class GameManager : MonoBehaviour
     private bool _superCharge = false;
     private float _levelWidth;
 
-
-
     private void Start()
     {
         _spawnPosition = transform.position;
@@ -32,19 +30,12 @@ public class GameManager : MonoBehaviour
                      padPrefab.GetComponent<SpriteRenderer>().bounds.extents.x / 2f;
         CreatePads();
     }
-
-
-
+    
     private void Update()
     {
         // Check if the "Esc" key was pressed
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (_isPaused)
-                ResumeGame();
-            else
-                PauseGame();
-        }
+        if (Input.GetKeyUp(KeyCode.Escape) && !pausePanel.IsOpen && !isPaused)
+            PauseGame();
 
 
         if (_indexToCheck < _pads.Count)
@@ -53,16 +44,12 @@ public class GameManager : MonoBehaviour
                 TranslatePad(_indexToTranslate);
         }
     }
-
-
-
+    
     private void CreatePads()
     {
         for (int i = 0; i < numberOfPadsToMake; i++)
             CreatePad();
     }
-
-
 
     private void CreatePad()
     {
@@ -86,9 +73,7 @@ public class GameManager : MonoBehaviour
 
         _pads.Add(padTemp);
     }
-
-
-
+    
     private void TranslatePad(int padIndex)
     {
         GameObject padToTranslate = _pads[padIndex];
@@ -122,9 +107,7 @@ public class GameManager : MonoBehaviour
 
         _indexToCheck = (_indexToTranslate + 5) % (_pads.Count - 1);
     }
-
-
-
+    
     private IEnumerator GrowPad(GameObject padObject)
     {
         for (int i = 0; i <= 10; i++)
@@ -135,31 +118,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void PauseGame()
-    {
-        Time.timeScale = 0; // Pause the game
-        _isPaused = true; // Update paused state
-        pausePanel.SetActive(true); // Show pause panel
-    }
+    public void PauseGame() => pausePanel.OpenMenu();
 
-    public void ResumeGame()
-    {
-        Time.timeScale = 1; // Unpause the game
-        _isPaused = false; // Update paused state
-        pausePanel.SetActive(false); // Hide pause panel
-    }
+    public void ResumeGame() => pausePanel.CloseMenu();
 
     // Restart Button 
-    public void RestartGame()
-    {
-        Time.timeScale = 1;
-        // This will reload the current scene, effectively restarting the game
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
+    public void RestartGame() => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
-    //Main Menu Button
-    public void MainMenu()
-    {
-        SceneManager.LoadScene("Menu");
-    }
+    // Main Menu Button
+    public void MainMenu() => SceneManager.LoadScene("Menu");
 }
