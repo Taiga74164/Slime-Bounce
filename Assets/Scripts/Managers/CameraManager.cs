@@ -26,7 +26,7 @@ public class CameraManager : MonoBehaviour
     {
         if (_isGameOver || playerTransform == null)
             return;
-        
+
         if (playerTransform.position.y > transform.position.y)
             transform.position = Vector3.Lerp(transform.position,
                 new Vector3(transform.position.x, playerTransform.position.y, transform.position.z),
@@ -39,7 +39,7 @@ public class CameraManager : MonoBehaviour
             return;
 
         _isGameOver = true;
-        
+
         RestartScene();
         // TODO:
         // 1. Add code to show UI
