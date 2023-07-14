@@ -796,8 +796,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a619cdbeb1e6d8c4687f5c28abab57bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  padPrefab: {fileID: 0}
-  superPadPrefab: {fileID: 0}
+  padPrefab: {fileID: 1261416034138479104, guid: e6370282e4907f74688f3aa3789bb3c5, type: 3}
+  superPadPrefab: {fileID: 1261416034138479104, guid: 9e3bf54a2ede8f642979872d85694a85, type: 3}
   numberOfPadsToMake: 10
   minVerticalDistance: 0
   maxVerticalDistance: 0
