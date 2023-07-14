@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
+
 
 public class GameManager : MonoBehaviour
 {
@@ -10,12 +13,16 @@ public class GameManager : MonoBehaviour
     public float minVerticalDistance;
     public float maxVerticalDistance;
 
+
+
     private List<GameObject> _pads = new List<GameObject>();
     private Vector2 _spawnPosition;
     private int _indexToCheck = 5;
     private int _indexToTranslate = 0;
     private bool _superCharge = false;
     private float _levelWidth;
+
+
 
     private void Start()
     {
@@ -24,6 +31,8 @@ public class GameManager : MonoBehaviour
                      padPrefab.GetComponent<SpriteRenderer>().bounds.extents.x / 2f;
         CreatePads();
     }
+
+
 
     private void Update()
     {
@@ -34,16 +43,22 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+
     private void CreatePads()
     {
         for (int i = 0; i < numberOfPadsToMake; i++)
             CreatePad();
     }
 
+
+
     private void CreatePad()
     {
         _spawnPosition = new Vector2(0f, _spawnPosition.y);
         _spawnPosition += new Vector2(Random.Range(-_levelWidth, _levelWidth), Random.Range(minVerticalDistance, maxVerticalDistance));
+
+
 
         GameObject padTemp;
         if (!_superCharge && Random.Range(0, 3) == 0)
@@ -56,20 +71,32 @@ public class GameManager : MonoBehaviour
             padTemp = Instantiate(padPrefab, _spawnPosition, Quaternion.identity);
         }
 
+
+
         _pads.Add(padTemp);
     }
+
+
 
     private void TranslatePad(int padIndex)
     {
         GameObject padToTranslate = _pads[padIndex];
         padToTranslate.transform.position = new Vector2(0f, padToTranslate.transform.position.y);
 
+
+
         _spawnPosition = new Vector2(0f, _spawnPosition.y);
         _spawnPosition += new Vector2(Random.Range(-_levelWidth, _levelWidth), Random.Range(minVerticalDistance, maxVerticalDistance));
 
+
+
         padToTranslate.transform.position = _spawnPosition;
 
+
+
         StartCoroutine(GrowPad(padToTranslate));
+
+
 
         if (_indexToTranslate < _pads.Count - 1)
         {
@@ -80,8 +107,12 @@ public class GameManager : MonoBehaviour
             _indexToTranslate = 0;
         }
 
+
+
         _indexToCheck = (_indexToTranslate + 5) % (_pads.Count - 1);
     }
+
+
 
     private IEnumerator GrowPad(GameObject padObject)
     {

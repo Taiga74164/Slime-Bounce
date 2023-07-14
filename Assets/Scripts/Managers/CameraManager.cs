@@ -46,7 +46,7 @@ public class CameraManager : MonoBehaviour
             return;
 
         _isGameOver = true;
-        
+
         RestartScene();
         // TODO:
         // 1. Add code to show UI
