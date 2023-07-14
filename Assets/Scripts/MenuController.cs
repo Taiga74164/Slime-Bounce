@@ -5,18 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-    public GameObject mainMenu;
-    public GameObject playButton;
-
-    private bool playerConnected = false;
-
-    public void OnPlayerConnected()
+    private void Update()
     {
-        playerConnected = true;
-    }
-
-    public void Play()
-    {
-        SceneManager.LoadScene("Game");
+        // Check for touch input or mouse click
+        if (Input.GetMouseButtonDown(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
+            SceneManager.LoadScene("Game");
     }
 }
