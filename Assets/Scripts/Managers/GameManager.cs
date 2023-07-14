@@ -37,7 +37,7 @@ public class GameManager : Singleton<GameManager>
     private void Update()
     {
         // Check if the "Esc" key was pressed
-        if (Input.GetKeyUp(KeyCode.Escape) && !pausePanel.IsOpen && !isPaused)
+        if (Input.GetButtonUp("Cancel") && !pausePanel.IsOpen && !isPaused)
             PauseGame();
 
 

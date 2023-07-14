@@ -15,7 +15,7 @@ public abstract class Menu : Menu<Menu>
 {
     protected virtual void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Escape) && IsOpen)
+        if (Input.GetButtonUp("Cancel") && IsOpen)
             CloseMenu();
     }
     
