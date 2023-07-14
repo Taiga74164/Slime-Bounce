@@ -8,6 +8,14 @@ public class PlatformController : MonoBehaviour
     
     public void OnCollisionEnter2D(Collision2D other)
     {
+        if (gameObject.CompareTag("Trap"))
+        {
+            if (other.relativeVelocity.y <= 0)
+                gameObject.SetActive(false);
+            
+            return;
+        }
+        
         // If the player lands on the platform, then jump
         if (other.relativeVelocity.y <= 0)
         {

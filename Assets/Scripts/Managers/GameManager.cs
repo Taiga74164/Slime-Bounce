@@ -7,8 +7,11 @@ using UnityEngine.Serialization;
 
 public class GameManager : Singleton<GameManager>
 {
-    public GameObject padPrefab;
-    public GameObject superPadPrefab;
+    // public GameObject padPrefab;
+    // public GameObject superPadPrefab;
+    // public GameObject trapPrefab;
+    public GameObject[] padPrefabs;
+    private int _randomIndex;
     public int numberOfPadsToMake = 10;
     public float minVerticalDistance;
     public float maxVerticalDistance;
@@ -27,7 +30,7 @@ public class GameManager : Singleton<GameManager>
     {
         _spawnPosition = transform.position;
         _levelWidth = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height)).x -
-                     padPrefab.GetComponent<SpriteRenderer>().bounds.extents.x / 2f;
+                     padPrefabs[_randomIndex].GetComponent<SpriteRenderer>().bounds.extents.x / 2f;
         CreatePads();
     }
     
@@ -55,22 +58,10 @@ public class GameManager : Singleton<GameManager>
     {
         _spawnPosition = new Vector2(0f, _spawnPosition.y);
         _spawnPosition += new Vector2(Random.Range(-_levelWidth, _levelWidth), Random.Range(minVerticalDistance, maxVerticalDistance));
-
-
-
-        GameObject padTemp;
-        if (!_superCharge && Random.Range(0, 3) == 0)
-        {
-            _superCharge = true;
-            padTemp = Instantiate(superPadPrefab, _spawnPosition, Quaternion.identity);
-        }
-        else
-        {
-            padTemp = Instantiate(padPrefab, _spawnPosition, Quaternion.identity);
-        }
-
-
-
+        
+        _randomIndex = Random.Range(0, padPrefabs.Length);
+        var padTemp = Instantiate(padPrefabs[_randomIndex], _spawnPosition, Quaternion.identity);
+        
         _pads.Add(padTemp);
     }
     

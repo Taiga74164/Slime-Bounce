@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 1261416034138479118}
   - component: {fileID: 1261416034138479105}
   m_Layer: 0
-  m_Name: Platform
-  m_TagString: Untagged
+  m_Name: PlatformTrap
+  m_TagString: Trap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 2e116a3e29cf0644e8b38cff0d09b550, type: 3}
-  m_Color: {r: 0.31276318, g: 0.9137255, b: 0, a: 1}
+  m_Color: {r: 0.9150943, g: 0.51382655, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
