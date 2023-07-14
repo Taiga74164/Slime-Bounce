@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
     public float minVerticalDistance;
     public float maxVerticalDistance;
 
-
+    public GameObject pausePanel; // UI Panel that will show when game is paused
+    private bool _isPaused = false; // Track if the game is paused
 
     private List<GameObject> _pads = new List<GameObject>();
     private Vector2 _spawnPosition;
@@ -36,6 +37,16 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        // Check if the "Esc" key was pressed
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (_isPaused)
+                ResumeGame();
+            else
+                PauseGame();
+        }
+
+
         if (_indexToCheck < _pads.Count)
         {
             if (transform.position.y >= _pads[_indexToCheck].transform.position.y)
@@ -122,5 +133,33 @@ public class GameManager : MonoBehaviour
             padObject.transform.localScale = new Vector3(scaleValue, scaleValue, scaleValue);
             yield return new WaitForSeconds(0.01f);
         }
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0; // Pause the game
+        _isPaused = true; // Update paused state
+        pausePanel.SetActive(true); // Show pause panel
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1; // Unpause the game
+        _isPaused = false; // Update paused state
+        pausePanel.SetActive(false); // Hide pause panel
+    }
+
+    // Restart Button 
+    public void RestartGame()
+    {
+        Time.timeScale = 1;
+        // This will reload the current scene, effectively restarting the game
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    //Main Menu Button
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 }
