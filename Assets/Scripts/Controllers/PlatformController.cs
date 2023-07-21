@@ -17,11 +17,15 @@ public class PlatformController : MonoBehaviour
         }
         
         // If the player lands on the platform, then jump
-        if (other.relativeVelocity.y <= 0)
+        if (other.gameObject.CompareTag("Player"))
         {
             var rb = other.collider.GetComponent<Rigidbody2D>();
-            if (rb != null)
+            var playerController = other.collider.GetComponent<PlayerController>();
+            if (rb != null && playerController != null)
+            {
                 rb.velocity = new Vector2(0, jumpForce);
+                playerController.isSlamming = false;
+            }
         }
     }
 }

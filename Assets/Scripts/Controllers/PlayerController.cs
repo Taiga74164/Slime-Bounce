@@ -7,9 +7,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float movementSpeed = 5.0f;
+    public float bounceForce = 10.0f;
+    public float slamForceMultiplier = 5.0f;
     
     private Rigidbody2D _rb;
     private float _movement;
+    public bool isSlamming = false;
+    private Vector2 _slamStartPos;
 
     private void Start()
     {
@@ -29,11 +33,25 @@ public class PlayerController : MonoBehaviour
         }
         
         _movement = Input.GetAxis("Horizontal") * movementSpeed;
-        // Debug.Log($"{_movement}, {Input.GetAxis("Horizontal")}");
+        if (Input.GetMouseButtonDown(0) && !isSlamming)
+        {
+            isSlamming = true;
+            _slamStartPos = transform.position;
+        }
     }
     
     private void FixedUpdate()
     {
-        _rb.velocity = new Vector2(_movement, _rb.velocity.y);
+        if (isSlamming)
+        {
+            var slamForce = Mathf.Clamp(_slamStartPos.y - transform.position.y, 0.5f, Mathf.Infinity) * slamForceMultiplier;
+            //Debug.Log($"{slamForce}, {_rb.velocity.y}");
+            _rb.velocity = new Vector2(_rb.velocity.x, -slamForce);
+        }
+        else
+        {
+            // Apply regular movement velocity
+            _rb.velocity = new Vector2(_movement, _rb.velocity.y);
+        }
     }
 }

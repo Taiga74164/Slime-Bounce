@@ -7,9 +7,6 @@ using UnityEngine.Serialization;
 
 public class GameManager : Singleton<GameManager>
 {
-    // public GameObject padPrefab;
-    // public GameObject superPadPrefab;
-    // public GameObject trapPrefab;
     public GameObject[] padPrefabs;
     private int _randomIndex;
     public int numberOfPadsToMake = 10;

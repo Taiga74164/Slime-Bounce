@@ -2513,6 +2513,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2688034425365985685, guid: b669202475b878e4cb59c7df85e719f8, type: 3}
+      propertyPath: movementSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2688034425365985685, guid: b669202475b878e4cb59c7df85e719f8, type: 3}
+      propertyPath: slamForceMultiplier
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2688034425365985688, guid: b669202475b878e4cb59c7df85e719f8, type: 3}
       propertyPath: m_Name
       value: Player
