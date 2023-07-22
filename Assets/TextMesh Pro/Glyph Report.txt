@@ -1,0 +1,13 @@
+Font: Franxurter Totally  Style: Medium
+Point Size: 80   SP/PD Ratio: 6.3%
+
+Characters included: 98/99
+Missing characters: 1
+Excluded characters: 0
+
+Characters missing from font file:
+----------------------------------------
+ID: 8203	Hex: 200B	Char [​]
+
+Characters excluded from packing:
+----------------------------------------
