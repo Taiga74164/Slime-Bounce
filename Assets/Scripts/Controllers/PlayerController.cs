@@ -15,10 +15,7 @@ public class PlayerController : MonoBehaviour
     public bool isSlamming = false;
     private Vector2 _slamStartPos;
 
-    private void Start()
-    {
-        _rb = GetComponent<Rigidbody2D>();
-    }
+    private void Start() => _rb = GetComponent<Rigidbody2D>();
     
     private void Update()
     {
@@ -42,16 +39,10 @@ public class PlayerController : MonoBehaviour
     
     private void FixedUpdate()
     {
-        if (isSlamming)
-        {
-            var slamForce = Mathf.Clamp(_slamStartPos.y - transform.position.y, 0.5f, Mathf.Infinity) * slamForceMultiplier;
-            //Debug.Log($"{slamForce}, {_rb.velocity.y}");
-            _rb.velocity = new Vector2(_rb.velocity.x, -slamForce);
-        }
-        else
-        {
-            // Apply regular movement velocity
-            _rb.velocity = new Vector2(_movement, _rb.velocity.y);
-        }
+        _rb.velocity = isSlamming
+            ? new Vector2(_rb.velocity.x, -GetSlamForce())
+            : new Vector2(_movement, _rb.velocity.y);
     }
+
+    public float GetSlamForce() => Mathf.Clamp(_slamStartPos.y - transform.position.y, 0.5f, Mathf.Infinity) * slamForceMultiplier;
 }

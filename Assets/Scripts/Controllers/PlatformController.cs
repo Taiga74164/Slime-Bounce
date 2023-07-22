@@ -8,22 +8,27 @@ public class PlatformController : MonoBehaviour
     
     public void OnCollisionEnter2D(Collision2D other)
     {
+        var rb = other.collider.GetComponent<Rigidbody2D>();
+        var playerController = other.collider.GetComponent<PlayerController>();
+        
         if (gameObject.CompareTag("Trap"))
         {
             if (other.relativeVelocity.y <= 0)
+            {
+                // Set a reasonable bounce force for punishment
+                rb.velocity = new Vector2(0, jumpForce * 0.5f);
                 gameObject.SetActive(false);
-            
-            return;
+                
+                return;
+            }
         }
         
         // If the player lands on the platform, then jump
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && other.relativeVelocity.y <= 0)
         {
-            var rb = other.collider.GetComponent<Rigidbody2D>();
-            var playerController = other.collider.GetComponent<PlayerController>();
             if (rb != null && playerController != null)
             {
-                rb.velocity = new Vector2(0, jumpForce);
+                rb.velocity = new Vector2(0, jumpForce + playerController.GetSlamForce());
                 playerController.isSlamming = false;
             }
         }
