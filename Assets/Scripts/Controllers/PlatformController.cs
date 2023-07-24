@@ -18,10 +18,10 @@ public class PlatformController : MonoBehaviour
             if (other.relativeVelocity.y <= 0)
             {
                 // Set a reasonable bounce force for punishment
-                rb.velocity = new Vector2(0, jumpForce * 0.5f);
+                //rb.velocity = new Vector2(0, jumpForce * 0.5f);
                 gameObject.SetActive(false);
                 
-                return;
+                //return;
             }
         }
         
@@ -30,7 +30,9 @@ public class PlatformController : MonoBehaviour
         {
             if (rb != null && playerController != null)
             {
-                rb.velocity = new Vector2(0, jumpForce + playerController.GetSlamForce());
+                rb.velocity = new Vector2(0, jumpForce);
+                //only adding the slam force if the player is slamming
+                rb.velocity += playerController.isSlamming ? new Vector2(0, playerController.GetSlamForce()) : Vector2.zero;
                 playerController.isSlamming = false;
             }
         }

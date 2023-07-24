@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     public float movementSpeed = 5.0f;
     public float bounceForce = 10.0f;
     public float slamForceMultiplier = 5.0f;
+    public float initialSlamForce = 2f;
     
     private Rigidbody2D _rb;
     private float _movement;
@@ -44,5 +45,5 @@ public class PlayerController : MonoBehaviour
             : new Vector2(_movement, _rb.velocity.y);
     }
 
-    public float GetSlamForce() => Mathf.Clamp(_slamStartPos.y - transform.position.y, 0.5f, Mathf.Infinity) * slamForceMultiplier;
+    public float GetSlamForce() => Mathf.Clamp(_slamStartPos.y - transform.position.y, initialSlamForce, Mathf.Infinity) * slamForceMultiplier;
 }

@@ -10,6 +10,7 @@ public class CameraManager : MonoBehaviour
 {
     [Header("Camera Components")]
     public float cameraSpeed = 5.0f;
+    public float cameraPanOffset = 2f; //offsets the y pos of when the camera will start to scroll
 
     [Header("UI Components")]
     public TMP_Text scoreText;
@@ -29,7 +30,7 @@ public class CameraManager : MonoBehaviour
         if (_isGameOver || playerTransform == null || GameManager.Instance.isPaused)
             return;
 
-        if (playerTransform.position.y > transform.position.y)
+        if (playerTransform.position.y > transform.position.y + cameraPanOffset)
         {
             transform.position = Vector3.Lerp(transform.position,
                 new Vector3(transform.position.x, playerTransform.position.y, transform.position.z),
