@@ -66,22 +66,14 @@ public class GameManager : Singleton<GameManager>
     {
         GameObject padToTranslate = _pads[padIndex];
         padToTranslate.transform.position = new Vector2(0f, padToTranslate.transform.position.y);
-
-
-
+       
         _spawnPosition = new Vector2(0f, _spawnPosition.y);
         _spawnPosition += new Vector2(Random.Range(-_levelWidth, _levelWidth), Random.Range(minVerticalDistance, maxVerticalDistance));
-
-
-
+        
         padToTranslate.transform.position = _spawnPosition;
-
-
-
+        
         StartCoroutine(GrowPad(padToTranslate));
-
-
-
+        
         if (_indexToTranslate < _pads.Count - 1)
         {
             _indexToTranslate++;
@@ -90,9 +82,7 @@ public class GameManager : Singleton<GameManager>
         {
             _indexToTranslate = 0;
         }
-
-
-
+        
         _indexToCheck = (_indexToTranslate + 5) % (_pads.Count - 1);
     }
     
