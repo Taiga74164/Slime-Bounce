@@ -15,25 +15,21 @@ public class PlayerController : MonoBehaviour
     private float _movement;
     private Vector2 _slamStartPos;
 
+    #region Unity Methods
+    
     private void Start() => _rb = GetComponent<Rigidbody2D>();
     
     private void Update()
     {
         if (GameManager.Instance.isPaused)
         {
-            _rb.simulated = false;
-            return;
+            SetSimulated(false);
         }
         else
         {
-            _rb.simulated = true;
-        }
-        
-        _movement = Input.GetAxis("Horizontal") * movementSpeed;
-        if (Input.GetMouseButtonDown(0) && !isSlamming)
-        {
-            isSlamming = true;
-            _slamStartPos = transform.position;
+            SetSimulated(true);
+            HandleMovement();
+            HandleSlam();
         }
     }
     
@@ -53,6 +49,25 @@ public class PlayerController : MonoBehaviour
             ? new Vector2(_rb.velocity.x, -GetSlamForce())
             : new Vector2(_movement, _rb.velocity.y);
     }
-
+    
+    #endregion
+    
+    #region Methods
+    
+    private void SetSimulated(bool value) => _rb.simulated = value;
+    
+    private void HandleMovement() => _movement = Input.GetAxis("Horizontal") * movementSpeed;
+    
+    private void HandleSlam()
+    {
+        if (Input.GetMouseButtonDown(0) && !isSlamming)
+        {
+            isSlamming = true;
+            _slamStartPos = transform.position;
+        }
+    }
+    
     public float GetSlamForce() => Mathf.Clamp(_slamStartPos.y - transform.position.y, initialSlamForce, Mathf.Infinity) * slamForceMultiplier;
+    
+    #endregion
 }

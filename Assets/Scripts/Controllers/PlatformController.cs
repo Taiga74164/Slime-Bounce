@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlatformController : MonoBehaviour
 {
     public float jumpForce = 10.0f;
-    public float sideBounceForce = 3.0f;
+    public float sideBounceForce = 5.0f;
     
     public void OnCollisionEnter2D(Collision2D other)
     {
@@ -29,7 +29,7 @@ public class PlatformController : MonoBehaviour
                 rb.velocity += playerController.isSlamming ? new Vector2(0, playerController.GetSlamForce()) : Vector2.zero;
                 playerController.isSlamming = false;
             }
-            else if (Mathf.Abs(other.contacts[0].normal.y) < 0.1f)
+            else if (Mathf.Abs(other.contacts[0].normal.y) < 0.6f) // This is annoying to debug. Play around with the values to get the desired effect
             {
                 // If the player collides with the side of the platform,
                 // Reflect the player's velocity to simulate bouncing off the side
