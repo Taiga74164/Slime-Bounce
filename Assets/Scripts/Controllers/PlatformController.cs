@@ -11,39 +11,32 @@ public class PlatformController : MonoBehaviour
     {
         var rb = other.collider.GetComponent<Rigidbody2D>();
         var playerController = other.collider.GetComponent<PlayerController>();
+        if (rb == null && playerController == null)
+            return;
         
         // If the player lands on the trap, then bounce a little and disable the trap
         if (gameObject.CompareTag("Trap"))
+            if (other.relativeVelocity.y <= 0)
+                gameObject.SetActive(false);
+        
+        if (other.gameObject.CompareTag("Player"))
         {
+            // If the player lands on the platform, then jump
             if (other.relativeVelocity.y <= 0)
             {
-                // Set a reasonable bounce force for punishment
-                //rb.velocity = new Vector2(0, jumpForce * 0.5f);
-                gameObject.SetActive(false);
-                
-                //return;
-            }
-        }
-        
-        // If the player lands on the platform, then jump
-        if (other.gameObject.CompareTag("Player") && other.relativeVelocity.y <= 0)
-        {
-            if (rb != null && playerController != null)
-            {
                 rb.velocity = new Vector2(0, jumpForce);
-                //only adding the slam force if the player is slamming
+                // Only adding the slam force if the player is slamming
                 rb.velocity += playerController.isSlamming ? new Vector2(0, playerController.GetSlamForce()) : Vector2.zero;
                 playerController.isSlamming = false;
             }
-        }
-        
-        // If the player collides with the side of the platform
-        if (other.gameObject.CompareTag("Player") && Mathf.Abs(other.contacts[0].normal.y) < 0.1f)
-        {
-            // Reflect the player's velocity to simulate bouncing off the side
-            var normal = other.contacts[0].normal;
-            var reflectedVelocity = Vector2.Reflect(rb.velocity, normal).normalized;
-            rb.velocity = reflectedVelocity * sideBounceForce;
+            else if (Mathf.Abs(other.contacts[0].normal.y) < 0.1f)
+            {
+                // If the player collides with the side of the platform,
+                // Reflect the player's velocity to simulate bouncing off the side
+                var normal = other.contacts[0].normal;
+                var reflectedVelocity = Vector2.Reflect(rb.velocity, normal).normalized;
+                rb.velocity = reflectedVelocity * sideBounceForce;
+            }
         }
     }
 }
