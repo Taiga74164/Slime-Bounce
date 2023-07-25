@@ -422,8 +422,13 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: -112, y: -25}
   m_SizeDelta: {x: 103.9885, y: 85.23}
+=======
+  m_AnchoredPosition: {x: -191, y: -93}
+  m_SizeDelta: {x: 204.7301, y: 161.1476}
+>>>>>>> Stashed changes
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &612811476
 MonoBehaviour:
@@ -501,7 +506,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b0a7289543e90794b9a48a81a5a0158a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e5560da37deda9b4a9b6abbff930e1c9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -940,8 +945,13 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: 11, y: 21}
   m_SizeDelta: {x: -413.84, y: -266.76}
+=======
+  m_AnchoredPosition: {x: -0.000061035156, y: 20}
+  m_SizeDelta: {x: -1136.521, y: -306.8682}
+>>>>>>> Stashed changes
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1117145281
 MonoBehaviour:
@@ -963,7 +973,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6b0aa3573413c1e42a533377702c109b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 68cb96184c6aa2a4885ab91a52c49df4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1017,8 +1027,13 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: -7, y: 33.124}
   m_SizeDelta: {x: 143.5652, y: 151.4782}
+=======
+  m_AnchoredPosition: {x: -9, y: -8}
+  m_SizeDelta: {x: 325.5459, y: 288.47}
+>>>>>>> Stashed changes
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1309121753
 MonoBehaviour:
@@ -1096,7 +1111,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d53b113feed096a47965fb0309dfbc3e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b0ebc3cf2cefefc439556ef31497b18d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1149,8 +1164,13 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: -7, y: 129}
   m_SizeDelta: {x: 216.3421, y: 78.0151}
+=======
+  m_AnchoredPosition: {x: -18, y: 161}
+  m_SizeDelta: {x: 405.8398, y: 87.7578}
+>>>>>>> Stashed changes
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1645245305
 MonoBehaviour:
@@ -1176,15 +1196,20 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5450677d9483930488bbf550c880c710, type: 2}
-  m_sharedMaterial: {fileID: -5028001261841277228, guid: 5450677d9483930488bbf550c880c710, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: d0c0104b54b1ac94d9fc334f5d41ae63, type: 2}
+  m_sharedMaterial: {fileID: -8194811325438549764, guid: d0c0104b54b1ac94d9fc334f5d41ae63, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
+<<<<<<< Updated upstream
     rgba: 4291297015
   m_fontColor: {r: 0.9686275, g: 0.9960785, b: 0.7803922, a: 1}
+=======
+    rgba: 4291737489
+  m_fontColor: {r: 0.5686275, g: 0.7176471, b: 0.8078432, a: 1}
+>>>>>>> Stashed changes
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1201,13 +1226,18 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
+<<<<<<< Updated upstream
   m_fontSize: 75
   m_fontSizeBase: 75
+=======
+  m_fontSize: 100
+  m_fontSizeBase: 100
+>>>>>>> Stashed changes
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -1337,8 +1367,13 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: 113, y: -31.557}
   m_SizeDelta: {x: 84.5351, y: 72.1151}
+=======
+  m_AnchoredPosition: {x: 174, y: -93}
+  m_SizeDelta: {x: 229.8489, y: 187.93}
+>>>>>>> Stashed changes
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1949876675
 MonoBehaviour:
@@ -1416,7 +1451,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d67317f0b302c214baeeca4d8b840770, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ea4aa0b6b838eaf44a9c7fba1416155b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
