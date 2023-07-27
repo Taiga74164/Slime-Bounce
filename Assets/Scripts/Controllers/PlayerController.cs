@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
             _slamStartPos = transform.position;
         }
     }
-    
+
     public float GetSlamForce() => Mathf.Clamp(_slamStartPos.y - transform.position.y, initialSlamForce, Mathf.Infinity) * slamForceMultiplier;
     
     #endregion

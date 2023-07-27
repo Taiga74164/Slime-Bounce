@@ -6,6 +6,7 @@ public class PlatformController : MonoBehaviour
 {
     public float jumpForce = 10.0f;
     public float sideBounceForce = 5.0f;
+    public float slamBounceMulti = 1f; //For the boost platforms. Other platforms can use it, but it's defaulted to 1 for no multiplier.
     
     public void OnCollisionEnter2D(Collision2D other)
     {
@@ -26,7 +27,7 @@ public class PlatformController : MonoBehaviour
             {
                 rb.velocity = new Vector2(0, jumpForce);
                 // Only adding the slam force if the player is slamming
-                rb.velocity += playerController.isSlamming ? new Vector2(0, playerController.GetSlamForce()) : Vector2.zero;
+                rb.velocity += playerController.isSlamming ? new Vector2(0, Mathf.Sqrt(playerController.GetSlamForce()) * 1.5f * slamBounceMulti) : Vector2.zero;
                 playerController.isSlamming = false;
             }
             else if (Mathf.Abs(other.contacts[0].normal.y) < 0.6f) // This is annoying to debug. Play around with the values to get the desired effect

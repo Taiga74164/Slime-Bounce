@@ -170,6 +170,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 10
-  slamForceMultiplier: 100
+  slamForceMultiplier: 5
   initialSlamForce: 2
   isSlamming: 0
