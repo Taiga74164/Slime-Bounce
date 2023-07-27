@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 1261416034138479116}
   - component: {fileID: 1261416034138479118}
   - component: {fileID: 1261416034138479105}
-  - component: {fileID: -2751606511758038265}
+  - component: {fileID: -4980179541967384214}
   m_Layer: 0
-  m_Name: PlatformTrap
-  m_TagString: Trap
+  m_Name: Platform_Front
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 2e116a3e29cf0644e8b38cff0d09b550, type: 3}
-  m_Color: {r: 0.9150943, g: 0.51382655, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: bc4a0f656f7e52d4c899e6f18f54c829, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -103,9 +103,9 @@ PlatformEffector2D:
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
   m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
+  m_UseSideFriction: 1
+  m_UseSideBounce: 1
+  m_SideArc: 30
 --- !u!114 &1261416034138479105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,7 +120,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 5
   sideBounceForce: 5
---- !u!60 &-2751606511758038265
+  slamBounceMulti: 1
+  platformType: 0
+  normalSprite: {fileID: 21300000, guid: bc4a0f656f7e52d4c899e6f18f54c829, type: 3}
+  boostSprite: {fileID: 21300000, guid: 45727b2639eafec47a5f54f7d0f2c41c, type: 3}
+  trapSprite: {fileID: 21300000, guid: 0156ce00f9c2e2241999f858504db9f5, type: 3}
+--- !u!60 &-4980179541967384214
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,7 +142,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 0.3}
+    oldSize: {x: 1.5, y: 0.37}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -145,7 +150,23 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.64, y: 0.14999999}
-      - {x: -0.64, y: -0.14999999}
-      - {x: 0.64, y: -0.14999999}
-      - {x: 0.64, y: 0.14999999}
+    - - {x: 0.61, y: -0.155}
+      - {x: 0.68, y: -0.114999995}
+      - {x: 0.75, y: -0.024999999}
+      - {x: 0.75, y: 0.044999998}
+      - {x: 0.68, y: 0.13499999}
+      - {x: 0.53, y: 0.185}
+      - {x: -0.08, y: 0.185}
+      - {x: -0.099999994, y: 0.175}
+      - {x: -0.17, y: 0.185}
+      - {x: -0.47, y: 0.185}
+      - {x: -0.57, y: 0.175}
+      - {x: -0.68, y: 0.125}
+      - {x: -0.75, y: 0.065}
+      - {x: -0.75, y: -0.044999998}
+      - {x: -0.61, y: -0.16499999}
+      - {x: -0.5, y: -0.185}
+      - {x: -0.17, y: -0.185}
+      - {x: -0.06, y: -0.175}
+      - {x: 0.24, y: -0.185}
+      - {x: 0.47, y: -0.185}

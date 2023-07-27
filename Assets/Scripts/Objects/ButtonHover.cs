@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class ButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
@@ -10,10 +11,22 @@ public class ButtonHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     private Vector3 _targetScale;
     private readonly float _scaleFactor = 1.2f;
     private readonly float _lerpSpeed = 10.0f;
+    private Button _button;
+    
+    private void Start()
+    {
+        _targetScale = _originalScale;
+        _button = this.GetComponent<Button>();
+        _button?.onClick.AddListener(OnClick);
+    }
 
-    private void Start() => _targetScale = _originalScale;
-
-    public void OnPointerEnter(PointerEventData eventData) => _targetScale = _originalScale * _scaleFactor;
+    private void OnClick() => AudioManager.Instance.popClick.Play();
+    
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        AudioManager.Instance.otherClick.Play();
+        _targetScale = _originalScale * _scaleFactor;
+    }
     
     public void OnPointerExit(PointerEventData eventData) => _targetScale = _originalScale;
     

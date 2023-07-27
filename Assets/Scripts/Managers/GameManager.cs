@@ -1,13 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 
 public class GameManager : Singleton<GameManager>
 {
-    public GameObject[] padPrefabs;
+    public PlatformController padPrefab;
     private int _randomIndex;
     public int numberOfPadsToMake = 10;
     public float minVerticalDistance;
@@ -16,18 +18,17 @@ public class GameManager : Singleton<GameManager>
     public PauseMenu pausePanel; // UI Panel that will show when game is paused
     public bool isPaused = false; // Track if the game is paused
 
-    private List<GameObject> _pads = new List<GameObject>();
+    private List<PlatformController> _pads = new List<PlatformController>();
     private Vector2 _spawnPosition;
     private int _indexToCheck = 5;
     private int _indexToTranslate = 0;
-    private bool _superCharge = false;
     private float _levelWidth;
 
     private void Start()
     {
         _spawnPosition = transform.position;
         _levelWidth = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height)).x -
-                     padPrefabs[_randomIndex].GetComponent<SpriteRenderer>().bounds.extents.x / 2f;
+                     padPrefab.GetComponent<SpriteRenderer>().bounds.extents.x / 2f;
         CreatePads();
     }
     
@@ -56,15 +57,15 @@ public class GameManager : Singleton<GameManager>
         _spawnPosition = new Vector2(0f, _spawnPosition.y);
         _spawnPosition += new Vector2(Random.Range(-_levelWidth, _levelWidth), Random.Range(minVerticalDistance, maxVerticalDistance));
         
-        _randomIndex = Random.Range(0, padPrefabs.Length);
-        var padTemp = Instantiate(padPrefabs[_randomIndex], _spawnPosition, Quaternion.identity);
-        
+        _randomIndex = Random.Range(0, Enum.GetNames(typeof(PlatformType)).Length);
+        var padTemp = Instantiate(padPrefab, _spawnPosition, Quaternion.identity);
+        padTemp.platformType = (PlatformType)_randomIndex;
         _pads.Add(padTemp);
     }
     
     private void TranslatePad(int padIndex)
     {
-        GameObject padToTranslate = _pads[padIndex];
+        var padToTranslate = _pads[padIndex];
         padToTranslate.transform.position = new Vector2(0f, padToTranslate.transform.position.y);
        
         _spawnPosition = new Vector2(0f, _spawnPosition.y);
@@ -86,7 +87,7 @@ public class GameManager : Singleton<GameManager>
         _indexToCheck = (_indexToTranslate + 5) % (_pads.Count - 1);
     }
     
-    private IEnumerator GrowPad(GameObject padObject)
+    private IEnumerator GrowPad(PlatformController padObject)
     {
         for (int i = 0; i <= 10; i++)
         {
