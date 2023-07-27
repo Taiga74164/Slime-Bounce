@@ -33,6 +33,7 @@ public class PlatformController : MonoBehaviour
                 break;
             case PlatformType.Boost:
                 spriteRenderer.sprite = boostSprite;
+                slamBounceMulti = 2f; //hardcoding this with how it's done now, just because it's easier.
                 //spriteRenderer.color = Color.magenta; // Temporary
                 break;
             case PlatformType.Trap:
@@ -56,15 +57,15 @@ public class PlatformController : MonoBehaviour
             if (other.relativeVelocity.y <= 0)
                 gameObject.SetActive(false);
         
-        if (other.gameObject.CompareTag("Player") && (platformType == PlatformType.Normal 
-                                                      || platformType == PlatformType.Boost))
+        if (other.gameObject.CompareTag("Player") /*&& (platformType == PlatformType.Normal 
+                                                      || platformType == PlatformType.Boost)*/) //the 'trap' leaf is intended to still allow you to bounce off of it. It just crumbles after you do.
         {
             // If the player lands on the platform, then jump
             if (rb.velocity.y <= 0)
             {
                 rb.velocity = new Vector2(0, jumpForce);
                 // Only adding the slam force if the player is slamming
-                rb.velocity += playerController.isSlamming ? new Vector2(0, Mathf.Sqrt(playerController.GetSlamForce()) * 1.5f * slamBounceMulti) : Vector2.zero;
+                rb.velocity += playerController.isSlamming ? new Vector2(0, Mathf.Sqrt(playerController.GetSlamForce()) * 2f * slamBounceMulti) : Vector2.zero;
                 playerController.isSlamming = false;
             }
             else if (Mathf.Abs(other.contacts[0].normal.y) < 0.4f) // This is annoying to debug. Play around with the values to get the desired effect
