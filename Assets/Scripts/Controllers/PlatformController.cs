@@ -17,7 +17,6 @@ public class PlatformController : MonoBehaviour
     public float slamBounceMulti = 1f; //For the boost platforms. Other platforms can use it, but it's defaulted to 1 for no multiplier.
     public PlatformType platformType = PlatformType.Normal;
     
-    // ToDo: Add the sprites when ready
     public Sprite normalSprite;
     public Sprite boostSprite;
     public Sprite trapSprite;
