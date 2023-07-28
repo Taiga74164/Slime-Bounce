@@ -11,6 +11,7 @@ public class AudioManager : Singleton<AudioManager>
     public AudioSource slimSplat;
     public AudioSource slimJump;
     public AudioSource crumple;
+    public AudioSource ost;
     
     private void Awake() => DontDestroyOnLoad(gameObject);
 }
