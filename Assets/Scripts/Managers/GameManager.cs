@@ -125,7 +125,8 @@ public class GameManager : Singleton<GameManager>
 
     private PlatformController GetPlatformPrefabForType(PlatformType platformType)
     {
-        switch (platformType)
+        return platformFrontPrefab; //only using the front-facing one for presentability.
+        /*switch (platformType)
         {
             case PlatformType.Normal:
                 return platformFrontPrefab;
@@ -135,7 +136,7 @@ public class GameManager : Singleton<GameManager>
                 return platformRightPrefab;
             default:
                 return platformFrontPrefab;
-        }
+        }*/
     }
     
     private Transform GetRandomSpawnPoint(int rowIndex)

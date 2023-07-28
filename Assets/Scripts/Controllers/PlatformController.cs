@@ -50,11 +50,14 @@ public class PlatformController : MonoBehaviour
         var playerController = other.collider.GetComponent<PlayerController>();
         if (rb == null && playerController == null)
             return;
-        
+
         // If the player lands on the trap, then bounce a little and disable the trap
         if (platformType == PlatformType.Trap)
             if (other.relativeVelocity.y <= 0)
+            {
+                AudioManager.Instance.crumple.Play();
                 gameObject.SetActive(false);
+            }
         
         if (other.gameObject.CompareTag("Player") /*&& (platformType == PlatformType.Normal 
                                                       || platformType == PlatformType.Boost)*/) //the 'trap' leaf is intended to still allow you to bounce off of it. It just crumbles after you do.
@@ -62,6 +65,13 @@ public class PlatformController : MonoBehaviour
             // If the player lands on the platform, then jump
             if (rb.velocity.y <= 0)
             {
+                //sounds
+                if (playerController.isSlamming)
+                    AudioManager.Instance.slimJump.Play();
+                else
+                    AudioManager.Instance.slimeHop.Play();
+
+                //logic
                 rb.velocity = new Vector2(0, jumpForce);
                 // Only adding the slam force if the player is slamming
                 rb.velocity += playerController.isSlamming ? new Vector2(0, Mathf.Sqrt(playerController.GetSlamForce()) * 2f * slamBounceMulti) : Vector2.zero;
