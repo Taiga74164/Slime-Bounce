@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1261416034138479116}
   - component: {fileID: 1261416034138479118}
   - component: {fileID: 1261416034138479105}
-  - component: {fileID: 8978114903889366635}
+  - component: {fileID: 5131471193880640396}
   m_Layer: 0
-  m_Name: Platform
+  m_Name: Platform_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 2e116a3e29cf0644e8b38cff0d09b550, type: 3}
-  m_Color: {r: 0.31276318, g: 0.9137255, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 5843c18fb9469104a92b7b0d296298bc, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -103,9 +103,9 @@ PlatformEffector2D:
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
   m_SurfaceArc: 180
-  m_UseSideFriction: 0
-  m_UseSideBounce: 0
-  m_SideArc: 1
+  m_UseSideFriction: 1
+  m_UseSideBounce: 1
+  m_SideArc: 30
 --- !u!114 &1261416034138479105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,8 +118,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a542728d77e170042972e4bffe6da282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpForce: 10
---- !u!60 &8978114903889366635
+  jumpForce: 5
+  sideBounceForce: 5
+  slamBounceMulti: 1
+  platformType: 0
+  normalSprite: {fileID: 21300000, guid: 5843c18fb9469104a92b7b0d296298bc, type: 3}
+  boostSprite: {fileID: 21300000, guid: 920d267bdad988d43bb1da2a97f681c6, type: 3}
+  trapSprite: {fileID: 21300000, guid: 41dc2f90e2088c64ebba0058663f0a52, type: 3}
+--- !u!60 &5131471193880640396
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,7 +142,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 0.3}
+    oldSize: {x: 2.5, y: 0.67}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -144,7 +150,34 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.64, y: 0.14999999}
-      - {x: -0.64, y: -0.14999999}
-      - {x: 0.64, y: -0.14999999}
-      - {x: 0.64, y: 0.14999999}
+    - - {x: 0.64, y: -0.105}
+      - {x: 0.65, y: -0.114999995}
+      - {x: 0.97999996, y: -0.175}
+      - {x: 1.23, y: -0.275}
+      - {x: 1.24, y: -0.24499999}
+      - {x: 1.24, y: -0.085}
+      - {x: 1.17, y: 0.055}
+      - {x: 1.06, y: 0.155}
+      - {x: 0.89, y: 0.255}
+      - {x: 0.75, y: 0.285}
+      - {x: 0.52, y: 0.315}
+      - {x: 0.26, y: 0.315}
+      - {x: 0.089999996, y: 0.285}
+      - {x: -0.02, y: 0.235}
+      - {x: -0.22999999, y: 0.295}
+      - {x: -0.41, y: 0.325}
+      - {x: -0.77, y: 0.325}
+      - {x: -1.05, y: 0.255}
+      - {x: -1.17, y: 0.175}
+      - {x: -1.23, y: 0.114999995}
+      - {x: -1.25, y: 0.065}
+      - {x: -1.25, y: -0.044999998}
+      - {x: -1.22, y: -0.105}
+      - {x: -1.15, y: -0.175}
+      - {x: -1.03, y: -0.235}
+      - {x: -0.9, y: -0.275}
+      - {x: -0.78999996, y: -0.305}
+      - {x: -0.39, y: -0.305}
+      - {x: -0.22999999, y: -0.265}
+      - {x: 0.04, y: -0.16499999}
+      - {x: 0.31, y: -0.114999995}
